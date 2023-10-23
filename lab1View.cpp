@@ -188,5 +188,4 @@ Clab1Doc* Clab1View::GetDocument() const // non-debug version is inline
 }
 #endif //_DEBUG
 
-
-// Clab1View message handlers
+//SALUTSALUT

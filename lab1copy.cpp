@@ -126,7 +126,7 @@ void Clab1View::OnDraw(CDC* pDC)
 	pDC->SetTextAlign(TA_TOP + TA_RIGHT);
 	pDC->TextOutW(rcClient.Width() - 1, 0, L"y=myFunction(x,eps)");
 }
-
+//Salutsalutsalut
 
 // Clab1View printing
 
