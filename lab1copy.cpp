@@ -64,69 +64,6 @@ double myFunction(double x, double eps) {
 	return 2 * result;
 }
 
-// Clab1View drawing
-
-void Clab1View::OnDraw(CDC* pDC)
-{
-	Clab1Doc* pDoc = GetDocument();
-	ASSERT_VALID(pDoc);
-	if (!pDoc)
-		return;
-
-	// TODO: add draw code for native data here
-	double a = -0.99, b = 0.99;
-	double precizia = 0.0001;
-	int nseg = 130;
-	double step = (b - a) / nseg;
-	double scalex = 100.0;
-	double scaley = 60.0;
-	double x, y;
-	
-	CPen penAxa(PS_SOLID, 2, RGB(0, 0, 255));
-	CPen penCos(PS_SOLID, 1, RGB(255, 0, 0));
-	CPen pengrad(PS_SOLID, 1, RGB(190, 190, 190));
-	CPen* pOLDPen = NULL;
-	CRect rcClient;	
-	GetClientRect(&rcClient);
-	CPoint centerx = rcClient.CenterPoint().x;
-	CPoint centery = rcClient.CenterPoint().y;
-	pOLDPen = pDC->SelectObject(&penAxa);
-
-	//Trasam axele
-	pDC->SelectObject(&penAxa);
-	pDC->MoveTo(0, rcClient.CenterPoint().y);
-	pDC->LineTo(rcClient.Width() - 1, rcClient.CenterPoint().y);
-	pDC->MoveTo(rcClient.CenterPoint().x, 0);
-	pDC->LineTo(rcClient.CenterPoint().x, rcClient.Height() - 1);
-
-
-	//Graficul functiei Standarte
-	step = 0.015;
-	for (x = a; x <= b; x+=step)
-	{
-		y = log(1 + x) - log(1 - x);
-		pDC->SetPixel(rcClient.CenterPoint().x + (int)(x * scalex), rcClient.CenterPoint().y - (int)(y * scaley), RGB(0, 255, 0));
-	}
-	pDC->SetTextColor(RGB(0, 255, 0));
-	pDC->SetTextAlign(TA_TOP + TA_LEFT);
-	pDC->TextOutW(0, 0, L"log(1 + x) - log(1 - x)");
-
-	//Graficul functiei Proprii
-	pDC->SelectObject(&penCos);
-	x = a;
-	y = myFunction(x, precizia);
-	pDC->MoveTo(rcClient.CenterPoint().x + (int)(x * scalex), rcClient.CenterPoint().y - (int)(y * scaley));
-	for (int i = 1; i <= nseg; i++)
-	{
-		x += step;
-		y = myFunction(x, precizia);
-		pDC->LineTo(rcClient.CenterPoint().x + (int)(x * scalex), rcClient.CenterPoint().y - (int)(y * scaley));
-	}
-	pDC->SetTextColor(RGB(255, 0, 0));
-	pDC->SetTextAlign(TA_TOP + TA_RIGHT);
-	pDC->TextOutW(rcClient.Width() - 1, 0, L"y=myFunction(x,eps)");
-}
-//Salutsalutsalut
 
 // Clab1View printing
 
