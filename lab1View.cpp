@@ -51,6 +51,20 @@ BOOL Clab1View::PreCreateWindow(CREATESTRUCT& cs)
 
 	return CView::PreCreateWindow(cs);
 }
+BOOL Clab1View::PreCreateWindow(CREATESTRUCT& cs)
+{
+	// TODO: Modify the Window class or styles here by modifying
+	//  the CREATESTRUCT cs
+
+	return CView::PreCreateWindow(cs);
+}
+BOOL Clab1View::PreCreateWindow(CREATESTRUCT& cs)
+{
+	// TODO: Modify the Window class or styles here by modifying
+	//  the CREATESTRUCT cs
+
+	return CView::PreCreateWindow(cs);
+}
 
 double myFunction(double x, double eps) {
 	double result = x;
